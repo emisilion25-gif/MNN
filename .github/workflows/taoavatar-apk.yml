@@ -20,7 +20,7 @@ jobs:
 
       - name: Download MNN Android prebuilt libs
         run: |
-          wget -q https://github.com/alibaba/MNN/releases/download/3.4.1/mnn_3.4.1_android_armv7_arm8_cpu_opencl_vulkan.zip
+          wget -q --content-disposition -L https://github.com/alibaba/MNN/releases/download/3.4.1/mnn_3.4.1_android_armv7_arm8_cpu_opencl_vulkan.zip
           unzip -q mnn_3.4.1_android_armv7_arm8_cpu_opencl_vulkan.zip -d mnn_android
 
       - name: Copy .so files to jniLibs
