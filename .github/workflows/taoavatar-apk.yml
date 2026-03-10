@@ -6,6 +6,7 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
+
     steps:
       - uses: actions/checkout@v4
 
@@ -14,20 +15,6 @@ jobs:
         with:
           java-version: '17'
           distribution: 'temurin'
-
-      - name: Download MNN Android prebuilt libs
-        run: |
-          ASSET_URL=$(curl -s https://api.github.com/repos/alibaba/MNN/releases/tags/3.4.1 | python3 -c "import sys,json; assets=json.load(sys.stdin)['assets']; print(next(a['browser_download_url'] for a in assets if 'android_armv7_arm8' in a['name']))")
-          echo "Downloading: $ASSET_URL"
-          curl -L "$ASSET_URL" -o mnn_android.zip
-          unzip -q mnn_android.zip -d mnn_android
-          ls mnn_android/
-
-      - name: Copy .so files to jniLibs
-        run: |
-          mkdir -p apps/Android/MnnTaoAvatar/app/src/main/jniLibs/arm64-v8a
-          mkdir -p apps/Android/MnnTaoAvatar/app/src/main/jniLibs/armeabi-v7a
-          find mnn_android -name "*.so" -exec cp {} apps/Android/MnnTaoAvatar/app/src/main/jniLibs/arm64-v8a/ \;
 
       - name: Build Debug APK
         working-directory: apps/Android/MnnTaoAvatar
