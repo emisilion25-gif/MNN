@@ -19,9 +19,11 @@ jobs:
           distribution: 'temurin'
 
       - name: Download MNN Android prebuilt libs
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
-          curl -L -o mnn_android.zip "https://github.com/alibaba/MNN/releases/download/v3.4.1/mnn_3.4.1_android_armv7_arm8_cpu_opencl_vulkan.zip"
-          unzip -q mnn_android.zip -d mnn_android
+          gh release download 3.4.1 --repo alibaba/MNN --pattern "mnn_3.4.1_android_armv7_arm8_cpu_opencl_vulkan.zip"
+          unzip -q mnn_3.4.1_android_armv7_arm8_cpu_opencl_vulkan.zip -d mnn_android
           ls mnn_android/
 
       - name: Copy .so files to jniLibs
