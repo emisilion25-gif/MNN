@@ -22,7 +22,7 @@ jobs:
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
-          gh release download 3.4.1 --repo alibaba/MNN --pattern "mnn_3.4.1_android_armv7_arm8_cpu_opencl_vulkan.zip"
+          gh release download 3.4.1 --repo alibaba/MNN --auth-token $GH_TOKEN --pattern "mnn_3.4.1_android_armv7_arm8_cpu_opencl_vulkan.zip"
           unzip -q mnn_3.4.1_android_armv7_arm8_cpu_opencl_vulkan.zip -d mnn_android
           ls mnn_android/
 
