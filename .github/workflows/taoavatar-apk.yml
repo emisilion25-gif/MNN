@@ -1,3 +1,4 @@
+
 name: Build TaoAvatar APK
 
 on:
@@ -20,7 +21,7 @@ jobs:
         working-directory: apps/Android/MnnTaoAvatar
         run: |
           chmod +x gradlew
-          ./gradlew assembleDebug --no-daemon
+          ./gradlew :app:assembleDebug --no-daemon
 
       - name: Upload APK
         uses: actions/upload-artifact@v4
