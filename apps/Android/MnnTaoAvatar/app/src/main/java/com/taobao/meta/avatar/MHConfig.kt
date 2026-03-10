@@ -27,7 +27,7 @@ object MHConfig {
         get() = "${BASE_DIR}/UniTalker-MNN/"
 //    /data/data/com.taobao.meta.avatar/files/.mnnmodels/modelscope/supertonic-tts-mnn
     val LLM_MODEL_DIR
-        get() = "${BASE_DIR}/Qwen2.5-1.5B-Instruct-MNN"
+        get() = "${BASE_DIR}/Qwen2.5-0.5B-Instruct-MNN"
 
     val ASR_MODEL_DIR
         get() = if (DeviceUtils.isChinese) {

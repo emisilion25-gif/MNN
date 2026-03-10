@@ -20,7 +20,7 @@ class DownloadModule(private val context: Activity) {
 
     //define the minimal repos to download
     private val reposToDownload = listOf(
-        "ModelScope/MNN/Qwen2.5-1.5B-Instruct-MNN",
+        "ModelScope/MNN/Qwen2.5-0.5B-Instruct-MNN",
         "ModelScope/MNN/UniTalker-MNN",
         "ModelScope/MNN/bert-vits2-MNN",
         "ModelScope/MNN/TaoAvatar-NNR-MNN",
