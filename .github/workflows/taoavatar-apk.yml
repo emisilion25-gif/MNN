@@ -2,9 +2,6 @@ name: Build TaoAvatar APK
 
 on:
   workflow_dispatch:
-  push:
-    paths:
-      - 'apps/Android/MnnTaoAvatar/**'
 
 jobs:
   build:
@@ -19,11 +16,11 @@ jobs:
           distribution: 'temurin'
 
       - name: Download MNN Android prebuilt libs
-        env:
-          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
-          gh release download 3.4.1 --repo alibaba/MNN --auth-token $GH_TOKEN --pattern "mnn_3.4.1_android_armv7_arm8_cpu_opencl_vulkan.zip"
-          unzip -q mnn_3.4.1_android_armv7_arm8_cpu_opencl_vulkan.zip -d mnn_android
+          ASSET_URL=$(curl -s https://api.github.com/repos/alibaba/MNN/releases/tags/3.4.1 | python3 -c "import sys,json; assets=json.load(sys.stdin)['assets']; print(next(a['browser_download_url'] for a in assets if 'android_armv7_arm8' in a['name']))")
+          echo "Downloading: $ASSET_URL"
+          curl -L "$ASSET_URL" -o mnn_android.zip
+          unzip -q mnn_android.zip -d mnn_android
           ls mnn_android/
 
       - name: Copy .so files to jniLibs
