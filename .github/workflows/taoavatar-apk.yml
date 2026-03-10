@@ -20,7 +20,7 @@ jobs:
 
       - name: Download MNN Android prebuilt libs
         run: |
-          curl -L -o mnn_android.zip "https://github.com/alibaba/MNN/releases/download/3.4.1/mnn_3.4.1_android_armv7_arm8_cpu_opencl_vulkan.zip"
+          curl -L -o mnn_android.zip "https://github.com/alibaba/MNN/releases/download/v3.4.1/mnn_3.4.1_android_armv7_arm8_cpu_opencl_vulkan.zip"
           unzip -q mnn_android.zip -d mnn_android
           ls mnn_android/
 
